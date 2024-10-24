@@ -3,12 +3,12 @@ import 'dart:math';
 import 'package:flame/components.dart';
 
 import '/game/enemy.dart';
-import '/game/dino_run.dart';
+import '/game/jungle_run.dart';
 import '/models/enemy_data.dart';
 
 // This class is responsible for spawning random enemies at certain
 // interval of time depending upon players current score.
-class EnemyManager extends Component with HasGameReference<DinoRun> {
+class EnemyManager extends Component with HasGameReference<JungleRun> {
   // A list to hold data for all the enemies.
   final List<EnemyData> _data = [];
 

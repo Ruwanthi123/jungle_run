@@ -14,7 +14,7 @@ class SettingsMenu extends StatelessWidget {
   static const id = 'SettingsMenu';
 
   // Reference to parent game.
-  final DinoRun game;
+  final JungleRun game;
 
   const SettingsMenu(this.game, {super.key});
 

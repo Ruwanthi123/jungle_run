@@ -60,7 +60,7 @@ class DinoRunApp extends StatelessWidget {
         ),
       ),
       home: Scaffold(
-        body: GameWidget<DinoRun>.controlled(
+        body: GameWidget<JungleRun>.controlled(
           // This will dislpay a loading bar until [DinoRun] completes
           // its onLoad method.
           loadingBuilder: (conetxt) => const Center(
@@ -79,7 +79,7 @@ class DinoRunApp extends StatelessWidget {
           },
           // By default MainMenu overlay will be active.
           initialActiveOverlays: const [MainMenu.id],
-          gameFactory: () => DinoRun(
+          gameFactory: () => JungleRun(
             // Use a fixed resolution camera to avoid manually
             // scaling and handling different screen sizes.
             camera: CameraComponent.withFixedResolution(

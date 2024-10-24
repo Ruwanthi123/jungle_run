@@ -15,7 +15,7 @@ class PauseMenu extends StatelessWidget {
   static const id = 'PauseMenu';
 
   // Reference to parent game.
-  final DinoRun game;
+  final JungleRun game;
 
   const PauseMenu(this.game, {super.key});
 

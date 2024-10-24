@@ -1,50 +1,27 @@
 import 'dart:math';
 
+import 'package:dino_run/game/enemy_factory.dart';
 import 'package:flame/components.dart';
 
 import '/game/enemy.dart';
 import '/game/dino_run.dart';
 import '/models/enemy_data.dart';
 
-// This class is responsible for spawning random enemies at certain
-// interval of time depending upon players current score.
-class EnemyManager extends Component with HasGameReference<DinoRun> {
-  // A list to hold data for all the enemies.
+class EnemyManager extends Component with HasGameReference<JungleRun> {
   final List<EnemyData> _data = [];
-
-  // Random generator required for randomly selecting enemy type.
   final Random _random = Random();
-
-  // Timer to decide when to spawn next enemy.
   final Timer _timer = Timer(2, repeat: true);
+  final EnemyFactory _enemyFactory = EnemyFactory(); // New factory instance
 
   EnemyManager() {
     _timer.onTick = spawnRandomEnemy;
   }
 
-  // This method is responsible for spawning a random enemy.
   void spawnRandomEnemy() {
-    /// Generate a random index within [_data] and get an [EnemyData].
     final randomIndex = _random.nextInt(_data.length);
     final enemyData = _data.elementAt(randomIndex);
-    final enemy = Enemy(enemyData);
+    final enemy = _enemyFactory.createEnemy(enemyData, game); // Use factory
 
-    // Help in setting all enemies on ground.
-    enemy.anchor = Anchor.bottomLeft;
-    enemy.position = Vector2(
-      game.virtualSize.x + 32,
-      game.virtualSize.y - 24,
-    );
-
-    // If this enemy can fly, set its y position randomly.
-    if (enemyData.canFly) {
-      final newHeight = _random.nextDouble() * 2 * enemyData.textureSize.y;
-      enemy.position.y -= newHeight;
-    }
-
-    // Due to the size of our viewport, we can
-    // use textureSize as size for the components.
-    enemy.size = enemyData.textureSize;
     game.world.add(enemy);
   }
 
@@ -54,9 +31,7 @@ class EnemyManager extends Component with HasGameReference<DinoRun> {
       removeFromParent();
     }
 
-    // Don't fill list again and again on every mount.
     if (_data.isEmpty) {
-      // As soon as this component is mounted, initilize all the data.
       _data.addAll([
         EnemyData(
           image: game.images.fromCache('AngryPig/Walk (36x30).png'),
@@ -100,4 +75,5 @@ class EnemyManager extends Component with HasGameReference<DinoRun> {
       enemy.removeFromParent();
     }
   }
+
 }

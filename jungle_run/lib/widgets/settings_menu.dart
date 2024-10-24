@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '/game/dino_run.dart';
+import '/game/jungle_run.dart';
 import '/models/settings.dart';
 import '/widgets/main_menu.dart';
 import '/game/audio_manager.dart';
@@ -14,7 +14,7 @@ class SettingsMenu extends StatelessWidget {
   static const id = 'SettingsMenu';
 
   // Reference to parent game.
-  final DinoRun game;
+  final JungleRun game;
 
   const SettingsMenu(this.game, {super.key});
 

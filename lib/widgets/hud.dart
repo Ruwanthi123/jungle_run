@@ -14,7 +14,7 @@ class Hud extends StatelessWidget {
   static const id = 'Hud';
 
   // Reference to parent game.
-  final DinoRun game;
+  final JungleRun game;
 
   const Hud(this.game, {super.key});
 

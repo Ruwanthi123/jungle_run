@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 
 import 'widgets/hud.dart';
-import 'game/dino_run.dart';
+import 'game/jungle_run.dart';
 import 'models/settings.dart';
 import 'widgets/main_menu.dart';
 import 'models/player_data.dart';
@@ -22,7 +22,7 @@ Future<void> main() async {
 
   // Initializes hive and register the adapters.
   await initHive();
-  runApp(const DinoRunApp());
+  runApp(const JungleRunApp());
 }
 
 // This function will initilize hive with apps documents directory.
@@ -39,14 +39,14 @@ Future<void> initHive() async {
 }
 
 // The main widget for this game.
-class DinoRunApp extends StatelessWidget {
-  const DinoRunApp({super.key});
+class JungleRunApp extends StatelessWidget {
+  const JungleRunApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Dino Run',
+      title: 'Jungle Run',
       theme: ThemeData(
         fontFamily: 'Audiowide',
         primarySwatch: Colors.blue,
@@ -60,7 +60,7 @@ class DinoRunApp extends StatelessWidget {
         ),
       ),
       home: Scaffold(
-        body: GameWidget<DinoRun>.controlled(
+        body: GameWidget<JungleRun>.controlled(
           // This will dislpay a loading bar until [DinoRun] completes
           // its onLoad method.
           loadingBuilder: (conetxt) => const Center(
@@ -79,7 +79,7 @@ class DinoRunApp extends StatelessWidget {
           },
           // By default MainMenu overlay will be active.
           initialActiveOverlays: const [MainMenu.id],
-          gameFactory: () => DinoRun(
+          gameFactory: () => JungleRun(
             // Use a fixed resolution camera to avoid manually
             // scaling and handling different screen sizes.
             camera: CameraComponent.withFixedResolution(

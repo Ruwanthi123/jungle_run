@@ -12,7 +12,7 @@ class MainMenu extends StatelessWidget {
   static const id = 'MainMenu';
 
   // Reference to parent game.
-  final DinoRun game;
+  final JungleRun game;
 
   const MainMenu(this.game, {super.key});
 

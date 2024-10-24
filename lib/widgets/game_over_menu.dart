@@ -16,7 +16,7 @@ class GameOverMenu extends StatelessWidget {
   static const id = 'GameOverMenu';
 
   // Reference to parent game.
-  final DinoRun game;
+  final JungleRun game;
 
   const GameOverMenu(this.game, {super.key});
 

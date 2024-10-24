@@ -16,11 +16,9 @@ import '/models/player_data.dart';
 import '/widgets/pause_menu.dart';
 import '/widgets/game_over_menu.dart';
 
-// This is the main flame game class.
-class DinoRun extends FlameGame with TapDetector, HasCollisionDetection {
-  DinoRun({super.camera});
+class JungleRun extends FlameGame with TapDetector, HasCollisionDetection {
+  JungleRun({super.camera});
 
-  // List of all the image assets.
   static const _imageAssets = [
     'DinoSprites - tard.png',
     'AngryPig/Walk (36x30).png',
@@ -34,24 +32,21 @@ class DinoRun extends FlameGame with TapDetector, HasCollisionDetection {
     'parallax/plx-6.png',
   ];
 
-  // List of all the audio assets.
   static const _audioAssets = [
     '8BitPlatformerLoop.wav',
     'hurt7.wav',
     'jump14.wav',
   ];
 
-  late Dino _dino;
+  late Player _dino;
   late Settings settings;
   late PlayerData playerData;
   late EnemyManager _enemyManager;
 
   Vector2 get virtualSize => camera.viewport.virtualSize;
 
-  // This method get called while flame is preparing this game.
   @override
   Future<void> onLoad() async {
-    // Makes the game full screen and landscape only.
     await Flame.device.fullScreen();
     await Flame.device.setLandscape();
 
@@ -85,14 +80,13 @@ class DinoRun extends FlameGame with TapDetector, HasCollisionDetection {
       velocityMultiplierDelta: Vector2(1.4, 0),
     );
 
-    // Add the parallax as the backdrop.
     camera.backdrop.add(parallaxBackground);
   }
 
-  /// This method add the already created [Dino]
+  /// This method add the already created [Player]
   /// and [EnemyManager] to this game.
   void startGamePlay() {
-    _dino = Dino(images.fromCache('DinoSprites - tard.png'), playerData);
+    _dino = Player(images.fromCache('DinoSprites - tard.png'), playerData);
     _enemyManager = EnemyManager();
 
     world.add(_dino);

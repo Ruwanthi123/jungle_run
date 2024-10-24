@@ -1,12 +1,12 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 
-import '/game/dino_run.dart';
+import '/game/jungle_run.dart';
 import '/models/enemy_data.dart';
 
 // This represents an enemy in the game world.
 class Enemy extends SpriteAnimationComponent
-    with CollisionCallbacks, HasGameReference<DinoRun> {
+    with CollisionCallbacks, HasGameReference<JungleRun> {
   // The data required for creation of this enemy.
   final EnemyData enemyData;
 
